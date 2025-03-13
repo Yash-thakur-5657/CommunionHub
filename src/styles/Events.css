@@ -1,0 +1,413 @@
+.events-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  overflow-x: hidden;
+}
+
+.events-container h1 {
+  color: #2348b1;
+  margin-bottom: 1.8rem;
+  text-align: center;
+  font-size: 1.8rem;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  white-space: nowrap;
+}
+
+.events-container h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(to right, #2348b1, #58cbfb);
+  border-radius: 2px;
+  animation: expandWidth 1.5s ease-out forwards;
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.events-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.events-filter h3 {
+  margin-bottom: 1.5rem;
+  color: #2348b1;
+  font-size: 1.5rem;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.filter-buttons button {
+  padding: 0.7rem 1.8rem;
+  border: 2px solid #2348b1;
+  background-color: white;
+  color: #2348b1;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  min-width: 130px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.filter-buttons button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(35, 72, 177, 0.1),
+    transparent
+  );
+  transition: all 0.6s;
+  z-index: -1;
+}
+
+.filter-buttons button:hover {
+  background-color: rgba(35, 72, 177, 0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(35, 72, 177, 0.1);
+}
+
+.filter-buttons button:hover::before {
+  left: 100%;
+}
+
+.filter-buttons button.active {
+  background-color: #2348b1;
+  color: white;
+  border-color: #2348b1;
+  box-shadow: 0 4px 15px rgba(35, 72, 177, 0.3);
+}
+
+.events-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+}
+
+.event-card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  animation: fadeIn 0.8s ease-out calc(var(--i, 0) * 0.2s) both;
+  margin-bottom: 1rem;
+}
+
+.event-card:nth-child(1) {
+  --i: 1;
+}
+
+.event-card:nth-child(2) {
+  --i: 2;
+}
+
+.event-card:nth-child(3) {
+  --i: 3;
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #2348b1, #58cbfb);
+  z-index: -1;
+}
+
+.event-card::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(to bottom, rgba(88, 203, 251, 0.05), transparent);
+  z-index: -1;
+}
+
+.event-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.event-card h2 {
+  color: #2348b1;
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.3;
+  padding-right: 80px;
+}
+
+.event-date,
+.event-location {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.event-date svg,
+.event-location svg {
+  margin-right: 8px;
+  color: #2348b1;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.event-description {
+  margin: 1.5rem 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.event-category {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: rgba(35, 72, 177, 0.08);
+  color: #2348b1;
+  padding: 0.4rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(35, 72, 177, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.add-event-section {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+.add-event-section::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #2348b1, #58cbfb);
+}
+
+.add-event-section h2 {
+  color: #2348b1;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-size: 2.2rem;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  white-space: nowrap;
+}
+
+.add-event-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, #2348b1, #58cbfb);
+  border-radius: 2px;
+  animation: expandWidth 1.5s ease-out forwards;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  transition: all 0.3s;
+  background-color: #4984e196;
+  color: #494848db;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  /* border-color: #2348b1; */
+  outline: none;
+  /* box-shadow: 0 0 0 4px rgba(35, 72, 177, 0.1); */
+  background-color: #4984e196;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #2348b1;
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: block;
+  margin: 2.5rem auto 0;
+  box-shadow: 0 4px 15px rgba(35, 72, 177, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.submit-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all 0.6s;
+  z-index: -1;
+}
+
+.submit-button:hover {
+  background-color: #1a3889;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(35, 72, 177, 0.4);
+}
+
+.submit-button:hover::before {
+  left: 100%;
+}
+
+@media (max-width: 768px) {
+  .events-list {
+    grid-template-columns: 1fr;
+    padding: 0 0.5rem;
+  }
+
+  .filter-buttons {
+    flex-direction: row;
+    padding: 0;
+  }
+
+  .filter-buttons button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .add-event-section {
+    padding: 2rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .event-card {
+    padding: 1.5rem;
+  }
+
+  .event-category {
+    top: 1.2rem;
+    right: 1.2rem;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .event-card h2 {
+    font-size: 1.3rem;
+    padding-right: 60px;
+  }
+}

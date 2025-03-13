@@ -1,0 +1,261 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  background-color: #ffffff;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  }
+
+.logo a {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333333;
+  text-decoration: none;
+  transition: all 0.3s;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+}
+
+.logo a:hover {
+  transform: scale(1.05);
+}
+
+.logo-icon {
+  font-size: 2rem;
+  margin-right: 0.6rem;
+  color: #2348b1;
+  animation: pulse 2s infinite;
+}
+
+/* Typewriter effect */
+.typewriter {
+  position: relative;
+  display: inline-block;
+  min-width: 180px;
+}
+
+.typewriter-text {
+  color: #2348b1;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
+}
+
+.nav li {
+  margin: 0 0.3rem;
+}
+
+.nav a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  transition: all 0.3s;
+  position: relative;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  background-color: #2348b1;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+  animation: slideInRight 0.4s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.nav a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.nav a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #2348b1;
+  border-radius: 2px;
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  to {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+  }
+}
+
+/* User Icon Styling */
+.user-icon {
+  margin-left: 1.5rem;
+}
+
+.user-icon .circle {
+  width: 40px;
+  height: 40px;
+  background-color: #2348b1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+}
+
+.user-icon .circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: #58cbfb;
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #2348b1;
+  z-index: 1000;
+}
+
+@media (max-width: 950px) {
+  .nav ul {
+    gap: 0.3rem;
+  }
+  
+  .nav li {
+    margin: 0;
+  }
+  
+  .nav a {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: row;
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .logo {
+    margin-bottom: 0;
+  }
+  
+  .hamburger-menu {
+    display: block;
+    position: absolute;
+    right: 5rem;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding: 5rem 2rem 2rem;
+    transition: right 0.3s ease;
+    z-index: 100;
+  }
+  
+  .nav.nav-open {
+    right: 0;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .nav li {
+    margin: 0;
+    width: 100%;
+  }
+  
+  .nav a {
+    padding: 0.8rem 1rem;
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  .user-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    margin-left: 0;
+  }
+} 
