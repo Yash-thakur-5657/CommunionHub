@@ -1,22 +1,10 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Events from './pages/Events';
 import './App.css';
 
 function App() {
-  useEffect(() => {
-    // Check if there's a redirect path in sessionStorage
-    const redirectPath = sessionStorage.getItem('redirectPath');
-    if (redirectPath) {
-      // Clear the redirect path from sessionStorage
-      sessionStorage.removeItem('redirectPath');
-      // Navigate to the redirect path
-      window.history.replaceState(null, '', redirectPath);
-    }
-  }, []);
-
   return (
     <Router>
       <div className="app">
@@ -41,16 +29,6 @@ function App() {
               <div className="about-page">
                 <h1>Support</h1>
                 <p>Need help? Our support team is ready to assist you with any questions or concerns.</p>
-              </div>
-            } />
-            {/* Catch-all route for undefined routes */}
-            <Route path="*" element={
-              <div className="about-page">
-                <h1>Page Not Found</h1>
-                <p>Sorry, the page you are looking for does not exist.</p>
-                <a href="/" style={{ display: 'inline-block', marginTop: '20px', padding: '10px 20px', background: 'var(--primary-color)', color: 'white', borderRadius: '5px', textDecoration: 'none' }}>
-                  Return to Home
-                </a>
               </div>
             } />
           </Routes>
