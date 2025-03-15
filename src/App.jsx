@@ -1,10 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Events from './pages/Events';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    // Check if there's a redirect path in sessionStorage
+    const redirectPath = sessionStorage.getItem('redirectPath');
+    if (redirectPath) {
+      // Clear the redirect path from sessionStorage
+      sessionStorage.removeItem('redirectPath');
+      // Navigate to the redirect path
+      window.history.replaceState(null, '', redirectPath);
+    }
+  }, []);
+
   return (
     <Router>
       <div className="app">

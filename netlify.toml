@@ -4,13 +4,59 @@
   functions = "netlify/functions"
   publish = "dist"
 
+# Handle SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+# Specific redirects for common routes
+[[redirects]]
+  from = "/events"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/communities"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/leaders"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about"
+  to = "/index.html"
+  status = 200
+  force = true
+
+# Headers to improve caching and security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
-  [[redirects]]
-    from = "/*"
-    to = "/index.html"
-    status = 200
-
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
   #[dev]

@@ -28,22 +28,12 @@
     <!-- End Single Page Apps for GitHub Pages -->
     <!-- Netlify SPA redirect handling -->
     <script>
-      // Redirect to index.html for SPA routing
-      (function() {
-        // Don't redirect on the homepage
-        if (window.location.pathname !== '/' && 
-            window.location.pathname !== '/index.html') {
-          // Check if this is a direct page load (not an SPA navigation)
-          if (window.history.state === null) {
-            // Store the original URL to redirect back after loading the app
-            sessionStorage.setItem('redirectPath', window.location.pathname);
-          }
-        }
-      })();
+      // This is a special file that Netlify will serve for all routes
+      // It's identical to index.html
     </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
-</html>
+</html> 
