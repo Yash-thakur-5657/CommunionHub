@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -18,30 +19,52 @@
   --light-accent: #8ed6fb;
 }
 
+html {
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   color: var(--text-color);
   background-color: #ffffff;
+  min-height: 100vh;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
 .main-content {
-  flex: 1;
+  flex: 1 0 auto;
   width: 100%;
-  max-width: 100%;
+  padding-bottom: 120px;
+  position: relative;
+  z-index: 1;
 }
 
 .footer {
-  text-align: center;
+  flex-shrink: 0;
+  width: 100%;
   padding: 1.5rem;
   background-color: var(--primary-color);
   color: white;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
 }
 
 a {
@@ -72,13 +95,13 @@ a {
   font-size: 1.1rem;
 }
 
-
 #root {
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
   text-align: left;
+  min-height: 100vh;
 }
 
 .logo {
@@ -115,4 +138,19 @@ a {
 
 .read-the-docs {
   color: #888;
+}
+
+@media screen and (max-width: 428px) {
+  .main-content {
+    padding-bottom: 100px;
+  }
+  
+  .about-page {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .about-page h1 {
+    font-size: 2rem;
+  }
 }

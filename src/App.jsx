@@ -31,6 +31,16 @@ function App() {
                 <p>Need help? Our support team is ready to assist you with any questions or concerns.</p>
               </div>
             } />
+            {/* Catch-all route for undefined routes */}
+            <Route path="*" element={
+              <div className="about-page">
+                <h1>Page Not Found</h1>
+                <p>Sorry, the page you are looking for does not exist.</p>
+                <a href="/" style={{ display: 'inline-block', marginTop: '20px', padding: '10px 20px', background: 'var(--primary-color)', color: 'white', borderRadius: '5px', textDecoration: 'none' }}>
+                  Return to Home
+                </a>
+              </div>
+            } />
           </Routes>
         </main>
         <footer className="footer">
